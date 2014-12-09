@@ -1,0 +1,32 @@
+{
+  "name": "brew-yml-to-html",
+  "version": "1.0.0",
+  "description": "brew-yml-to-html ================",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eiriksm/brew-yml-to-html.git"
+  },
+  "keywords": [
+    "brew",
+    "beer"
+  ],
+  "author": "Eirik S. Morland <eirik@morland.no>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eiriksm/brew-yml-to-html/issues"
+  },
+  "homepage": "https://github.com/eiriksm/brew-yml-to-html",
+  "dependencies": {
+    "js-yaml": "^3.2.3"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.5",
+    "mocha": "^2.0.1",
+    "should": "^4.3.1"
+  }
+}
