@@ -10,6 +10,7 @@ describe('Module functionality', function() {
     var filename = './test/assets/brews.yml';
     var template = fs.readFileSync('./test/assets/brews.html', 'utf-8');
     var r = b(filename, template);
-    console.log(r);
+    var rendered = fs.readFileSync('./test/assets/rendered.html', 'utf-8');
+    r['6dec'].should.equal(rendered);
   });
 });

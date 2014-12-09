@@ -6,14 +6,21 @@ module.exports = function(filename, template) {
     var data = yaml.safeLoad(fs.readFileSync(process.cwd() + '/' + filename, 'utf-8'));
     var html = {};
     for (var prop in data) {
-      if (data.hasOwnProperty(prop)) {
-        // Write a js object with these properties.
-        var js = [];
-        // Write it with a script tag and everything.
-        js.push("<script>var docs = JSON.parse('");
-        js.push(JSON.stringify(data[prop]));
-        js.push("');</script>");
-        html[prop] = template.replace('{{graphs}}', js.join(''));
+      if (data.hasOwnProperty(prop) && data[prop]) {
+        html[prop] = template;
+        // Write a js object with the properties we know.
+        for (var p in data[prop]) {
+          var replaceString = '{{' + p + '}}';
+          if (!template.indexOf(replaceString) > 0) {
+            continue;
+          }
+          var js = [];
+          // Write it with a script tag and everything.
+          js.push("<script>var docs = JSON.parse('");
+          js.push(JSON.stringify(data[prop][p]));
+          js.push("');</script>");
+          html[prop] = html[prop].replace(replaceString, js.join(''));
+        }
       }
     }
     return html;
