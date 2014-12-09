@@ -7,10 +7,12 @@ module.exports = function(filename, template) {
     var html = {};
     for (var prop in data) {
       if (data.hasOwnProperty(prop)) {
+        // Write a js object with these properties.
         var js = [];
-        js.push("var docs = JSON.parse('");
+        // Write it with a script tag and everything.
+        js.push("<script>var docs = JSON.parse('");
         js.push(JSON.stringify(data[prop]));
-        js.push("');");
+        js.push("');</script>");
         html[prop] = template.replace('{{graphs}}', js.join(''));
       }
     }
